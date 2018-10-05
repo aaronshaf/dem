@@ -1,6 +1,6 @@
 ## Usage
 
-```
+```bash
 npm install -g @aaronshaf/dem
 
 # Install lit-html and its dependencies to vendor directory
