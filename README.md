@@ -28,7 +28,7 @@ lib/render.js
 lib/template-factory.js
 ```
 
-## Install a module to a directory
+### Install a module to a directory
 
 ```bash
 dem https://unpkg.com/lit-html@0.11.4/lit-html.js -o vendor
