@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const path = require("path");
 const download = require("./download");
 const argv = require("minimist")(process.argv.slice(2));
