@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "acorn": "^6.0.2",
+    "chalk": "^2.4.1",
+    "got": "^9.2.2",
+    "minimist": "^1.2.0",
+    "mkdirp-promise": "^5.0.1"
+  },
+  "name": "@aaronshaf/dem",
+  "version": "1.0.0",
+  "description": "Tool for downloading ECMAScript modules",
+  "main": "index.js",
+  "bin": {
+    "dem": "./index.js"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronshaf/dem.git"
+  },
+  "author": "Aaron Shafovaloff <aaronshaf@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aaronshaf/dem/issues"
+  },
+  "homepage": "https://github.com/aaronshaf/dem#readme"
+}
