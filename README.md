@@ -1,3 +1,5 @@
+Download an ECMAScript module and its dependencies.
+
 ## Usage
 
 ```bash
