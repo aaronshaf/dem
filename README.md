@@ -6,7 +6,7 @@ Download an ECMAScript module and its dependencies.
 npm install -g @aaronshaf/dem
 ```
 
-## Install module and its dependencies
+## Usage
 
 ```bash
 dem https://unpkg.com/lit-html@0.11.4/lit-html.js
@@ -14,7 +14,7 @@ dem https://unpkg.com/lit-html@0.11.4/lit-html.js
 
 This downloads:
 
-```bash
+```
 lit-html.js
 lib/default-template-processor.js
 lib/parts.js
