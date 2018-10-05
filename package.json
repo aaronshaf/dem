@@ -9,6 +9,10 @@
   "name": "@aaronshaf/dem",
   "version": "1.0.5",
   "description": "Tool for downloading ECMAScript modules",
+  "keywords": [
+    "module",
+    "downloader"
+  ],
   "main": "index.js",
   "bin": {
     "dem": "./index.js"
