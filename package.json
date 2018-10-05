@@ -7,7 +7,7 @@
     "mkdirp-promise": "^5.0.1"
   },
   "name": "@aaronshaf/dem",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Tool for downloading ECMAScript modules",
   "keywords": [
     "module",
