@@ -9,7 +9,7 @@ npm install -g @aaronshaf/dem
 ## Usage
 
 ```
-Usage: index [options] <source>
+Usage: dem [options] <source>
 
 Options:
   -v, --version                  output the version number
