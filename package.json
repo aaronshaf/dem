@@ -10,7 +10,7 @@
     "tempy": "^0.2.1"
   },
   "name": "@aaronshaf/dem",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Tool for downloading ECMAScript modules",
   "keywords": [
     "module",
