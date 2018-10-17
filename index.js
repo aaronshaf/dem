@@ -43,7 +43,7 @@ program
         };
         const _bundle = await rollup.rollup(inputOptions);
         const rollupResult = await _bundle.generate(outputOptions);
-        const licenses = new Set();
+        let lastLicense = null;
         const { code } = minify(
           rollupResult.code,
           {},
@@ -57,8 +57,8 @@ program
               if (isLicense === false) {
                 return false;
               }
-              if (licenses.has(comment) === false) {
-                licenses.add(comment);
+              if (lastLicense !== comment) {
+                lastLicense = comment;
                 return true;
               } else {
                 return false;
