@@ -8,8 +8,22 @@ npm install -g @aaronshaf/dem
 
 ## Usage
 
+```
+Usage: index [options] <source>
+
+Options:
+  -v, --version                  output the version number
+  -d, --destination <directory>  directory to download to
+  -b, --bundle <file>            bundle and minify into one file
+  -h, --help                     output usage information
+```
+
+## Examples
+
+### Simple download
+
 ```bash
-dem https://unpkg.com/lit-html@0.11.4/lit-html.js
+dem https://unpkg.com/lit-html@0.12/lit-html.js
 ```
 
 This downloads:
@@ -31,5 +45,11 @@ lib/template-factory.js
 ### Download to a specific directory
 
 ```bash
-dem https://unpkg.com/lit-html@0.11.4/lit-html.js -o vendor
+dem https://unpkg.com/lit-html@0.12/lit-html.js --destination vendor
+```
+
+### Bundle and minify to a single file
+
+```bash
+dem https://unpkg.com/lit-html@0.12/lit-html.js --bundle lit-html.min.js
 ```

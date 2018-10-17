@@ -11,13 +11,17 @@ const readFile = util.promisify(fs.readFile);
 
 let alreadyDownloading = new Set();
 
-function download(localDirectory, url) {
-  return new Promise(async (resolve, reject) => {
+function download(localDirectory, url, tmpDirectory) {
+  return new Promise(async (resolve, _reject) => {
     await mkdirp(localDirectory);
     const filename = path.basename(url);
     const absoluteLocalPath = path.join(localDirectory, filename);
     console.log(
-      chalk.green(absoluteLocalPath.substr(process.cwd().length + 1))
+      chalk.green(
+        absoluteLocalPath.substr(
+          tmpDirectory ? tmpDirectory.length + 1 : process.cwd().length + 1
+        )
+      )
     );
     const stream = got
       .stream(url)
@@ -44,7 +48,7 @@ function download(localDirectory, url) {
         if (alreadyDownloading.has(externalUrl)) {
           continue;
         }
-        await download(newPath, externalUrl);
+        await download(newPath, externalUrl, tmpDirectory);
       }
       resolve();
     });

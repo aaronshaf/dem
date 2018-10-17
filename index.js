@@ -1,16 +1,60 @@
 #!/usr/bin/env node
 
+const fs = require("fs");
+const program = require("commander");
 const path = require("path");
+const chalk = require("chalk");
+const tempy = require("tempy");
 const download = require("./download");
-const argv = require("minimist")(process.argv.slice(2));
-if (argv["_"] == null || argv["_"][0] == null) {
-  throw Error("url missing");
-}
-const url = argv["_"][0];
+const rollup = require("rollup");
+const minify = require("babel-minify");
 
-const localDirectory = path.resolve(
-  process.cwd(),
-  typeof argv["o"] === "string" ? argv["o"] : ""
-);
+program
+  .version(require("./package.json").version, "-v, --version")
+  .usage("[options] <source>")
+  .option("-d, --destination <directory>", "directory to download to")
+  .option("-b, --bundle <file>", "bundle and minify into one file")
+  .action(async (source, options) => {
+    try {
+      if (source == null || options == null) {
+        program.outputHelp();
+        return;
+      }
 
-download(localDirectory, url);
+      const localDirectory = options.bundle
+        ? tempy.directory()
+        : path.resolve(
+            process.cwd(),
+            typeof options.destination === "string" ? options.destination : ""
+          );
+      await download(
+        localDirectory,
+        source,
+        options.bundle && localDirectory /* tmpDirectory */
+      );
+
+      if (options.bundle) {
+        const filename = path.basename(source);
+        const inputOptions = {
+          input: path.join(localDirectory, filename)
+        };
+        const outputOptions = {
+          format: "esm"
+        };
+        const _bundle = await rollup.rollup(inputOptions);
+        const rollupResult = await _bundle.generate(outputOptions);
+        const { code } = minify(
+          rollupResult.code,
+          {},
+          {
+            sourceType: "module"
+          }
+        );
+        fs.writeFileSync(path.resolve(process.cwd(), options.bundle), code);
+        console.log("→ " + chalk.green(options.bundle));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  })
+  .parse(process.argv);

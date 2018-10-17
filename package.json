@@ -1,26 +1,27 @@
 {
   "dependencies": {
     "acorn": "^6.0.2",
+    "babel-minify": "^0.5.0",
     "chalk": "^2.4.1",
+    "commander": "^2.19.0",
     "got": "^9.2.2",
-    "minimist": "^1.2.0",
-    "mkdirp-promise": "^5.0.1"
+    "mkdirp-promise": "^5.0.1",
+    "rollup": "^0.66.6",
+    "tempy": "^0.2.1"
   },
   "name": "@aaronshaf/dem",
   "version": "1.0.10",
   "description": "Tool for downloading ECMAScript modules",
   "keywords": [
     "module",
-    "downloader"
+    "downloader",
+    "bundler"
   ],
   "main": "index.js",
   "bin": {
     "dem": "./index.js"
   },
   "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aaronshaf/dem.git"
