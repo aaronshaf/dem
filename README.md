@@ -1,4 +1,4 @@
-Download an ECMAScript module and its dependencies.
+Download an ECMAScript module and its relative dependencies.
 
 ## Install
 
@@ -9,7 +9,7 @@ npm install -g @aaronshaf/dem
 ## Usage
 
 ```
-Usage: dem [options] <source>
+dem [options] <source>
 
 Options:
   -v, --version                  output the version number
