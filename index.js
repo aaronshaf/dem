@@ -43,11 +43,27 @@ program
         };
         const _bundle = await rollup.rollup(inputOptions);
         const rollupResult = await _bundle.generate(outputOptions);
+        const licenses = new Set();
         const { code } = minify(
           rollupResult.code,
           {},
           {
-            sourceType: "module"
+            sourceType: "module",
+            // don't include redundant license or copyright notice
+            comments: function(comment) {
+              const isLicense =
+                comment.toLowerCase().includes("license") ||
+                comment.toLowerCase().includes("copyright");
+              if (isLicense === false) {
+                return false;
+              }
+              if (licenses.has(comment) === false) {
+                licenses.add(comment);
+                return true;
+              } else {
+                return false;
+              }
+            }
           }
         );
         fs.writeFileSync(path.resolve(process.cwd(), options.bundle), code);
